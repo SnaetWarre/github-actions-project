@@ -17,6 +17,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t hello-world-nginx:v1 .
       
+      - name: Clean up existing containers
+        run: |
+          docker stop test-container 2>/dev/null || true
+          docker rm test-container 2>/dev/null || true
+      
       - name: Run Docker container
         run: |
           docker run -d -p 8080:80 --name test-container hello-world-nginx:v1
