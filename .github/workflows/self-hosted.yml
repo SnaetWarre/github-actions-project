@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-test:
     runs-on: self-hosted
+    timeout-minutes: 10
     steps:
       - name: Check out code repository
         uses: actions/checkout@v4
